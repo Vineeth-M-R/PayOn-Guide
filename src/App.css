@@ -659,7 +659,230 @@ input, button, select, textarea {
   pointer-events: auto;
 }
 
+.suggestions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.6rem 1.25rem;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.suggestion-chip {
+  background: #f0ebfa;
+  color: var(--wf-purple);
+  border: 1px solid #c4a8f0;
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.suggestion-chip:hover {
+  background: #ddd4f7;
+}
+
 @keyframes msgIn {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* =====================
+   ID Info Step (Step 4)
+======================== */
+.id-field-group {
+  margin-bottom: 1rem;
+}
+
+.id-input-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #bbb;
+  border-radius: 999px;
+  padding: 0.85rem 1.1rem;
+  background: white;
+  gap: 0.5rem;
+}
+
+.id-input-row svg {
+  flex-shrink: 0;
+  color: #767676;
+}
+
+.id-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 1rem;
+  color: #1a1a1a;
+  font-family: inherit;
+}
+
+.id-input::placeholder {
+  color: #767676;
+}
+
+.id-input-date {
+  color: #767676;
+}
+
+.id-input-date:valid {
+  color: #1a1a1a;
+}
+
+.id-select {
+  appearance: none;
+  cursor: pointer;
+  flex: 1;
+  color: #767676;
+}
+
+.id-note {
+  font-size: 0.78rem;
+  color: #767676;
+  margin-top: 0.4rem;
+  padding: 0 0.5rem;
+  line-height: 1.4;
+}
+
+.select-row {
+  position: relative;
+}
+
+.mt-8 { margin-top: 2rem; }
+
+/* =====================
+   Loan Agreement (Step 5)
+======================== */
+.agreement-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  padding-top: 0.5rem;
+}
+
+.agreement-title {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.download-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1a1a1a;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.agreement-body {
+  font-size: 0.82rem;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+.bank-block {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  align-items: flex-start;
+}
+
+.bank-logo-box {
+  background: #1a1a1a;
+  color: white;
+  font-weight: 800;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  padding: 0.4rem 0.5rem;
+  line-height: 1.3;
+  min-width: 52px;
+  text-align: center;
+}
+
+.bank-address p {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 0.82rem;
+}
+
+.agreement-meta {
+  border-top: 1px solid #1a1a1a;
+  padding-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  margin-bottom: 0.25rem;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.agreement-para {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+  text-align: justify;
+}
+
+/* Truth-In-Lending Table */
+.tila-table {
+  border: 1.5px solid #1a1a1a;
+  margin-bottom: 1.5rem;
+}
+
+.tila-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 0.4rem;
+  border-bottom: 1.5px solid #1a1a1a;
+}
+
+.tila-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.tila-cell {
+  padding: 0.5rem;
+  border-right: 1.5px solid #1a1a1a;
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.tila-cell:last-child {
+  border-right: none;
+}
+
+.tila-label {
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.tila-desc {
+  color: #444;
+  margin-bottom: 0.4rem;
+}
+
+.tila-value {
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.agree-accept-row {
+  margin-top: 1.5rem;
 }
