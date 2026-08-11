@@ -25,55 +25,67 @@ const STEP_SUGGESTIONS = {
   3: [
     {
       label: 'Names',
-      response: 'Please enter your legal name exactly as it appears on your government-issued ID. This includes your first name, middle initial (optional), last name, and suffix if applicable (e.g., Jr., Sr.).'
+      response: 'Please enter your legal name exactly as it appears on your government-issued ID. This includes your first name, middle initial (optional), last name, and suffix if applicable (e.g., Jr., Sr.).',
+      targetId: 'section-names'
     },
     {
       label: 'Primary address',
-      response: 'Your primary address is your current residential address — the place where you physically live most of the time. Enter your full street address including street number, name, city, state, and ZIP code.'
+      response: 'Your primary address is your current residential address — the place where you physically live most of the time. Enter your full street address including street number, name, city, state, and ZIP code.',
+      targetId: 'section-address'
     },
     {
       label: 'Mailing address',
-      response: 'A mailing address is where you receive mail, such as a P.O. Box or a different address from your home. If your mailing address is the same as your residential address, you don\'t need to enter it separately.'
+      response: 'A mailing address is where you receive mail, such as a P.O. Box or a different address from your home. If your mailing address is the same as your residential address, you don\'t need to enter it separately.',
+      targetId: 'section-address'
     },
     {
       label: 'Spouse address',
-      response: 'If your spouse lives at a different address, you may need to provide it for verification or joint application purposes. If you share the same address, simply enter your shared home address.'
+      response: 'If your spouse lives at a different address, you may need to provide it for verification or joint application purposes. If you share the same address, simply enter your shared home address.',
+      targetId: 'section-address'
     },
     {
       label: 'Substitute address',
-      response: 'If you are enrolled in a state address confidentiality program (ACP), you may provide a substitute address instead of your actual residential address.'
+      response: 'If you are enrolled in a state address confidentiality program (ACP), you may provide a substitute address instead of your actual residential address.',
+      targetId: 'section-address'
     },
   ],
   4: [
     {
       label: 'Why ID verification?',
-      response: 'Federal law requires financial institutions to verify the identity of every applicant. This helps prevent fraud, identity theft, and money laundering. Your SSN or ITIN is used solely for verification and to run a soft credit check that won\'t affect your credit score.'
+      response: 'Federal law requires financial institutions to verify the identity of every applicant. This helps prevent fraud, identity theft, and money laundering. Your SSN or ITIN is used solely for verification and to run a soft credit check that won\'t affect your credit score.',
+      targetId: 'section-ssn'
     },
     {
       label: 'Citizenship requirements?',
-      response: 'You do not need to be a U.S. citizen to apply for a Wells Fargo Pay On loan. Permanent residents, visa holders, and other non-citizens may be eligible. Simply select your citizenship status from the dropdown and we\'ll determine your eligibility accordingly.'
+      response: 'You do not need to be a U.S. citizen to apply for a Wells Fargo Pay On loan. Permanent residents, visa holders, and other non-citizens may be eligible. Simply select your citizenship status from the dropdown and we\'ll determine your eligibility accordingly.',
+      targetId: 'section-citizenship'
     },
     {
       label: 'SSN Consent?',
-      response: 'By providing your Social Security Number (SSN) or Individual Taxpayer Identification Number (ITIN), you consent to Wells Fargo using it to verify your identity and retrieve your credit profile for the purpose of this loan application. This is a soft inquiry and will not impact your credit score until you sign the final loan agreement.'
+      response: 'By providing your Social Security Number (SSN) or Individual Taxpayer Identification Number (ITIN), you consent to Wells Fargo using it to verify your identity and retrieve your credit profile for the purpose of this loan application. This is a soft inquiry and will not impact your credit score until you sign the final loan agreement.',
+      targetId: 'section-ssn'
     },
   ],
   5: [
     {
       label: 'TL;DR',
-      response: 'In short: You\'re borrowing $9,945 at a 28.283% annual interest rate. Over the life of the loan you\'ll pay $12,570.92 in interest, bringing your total repayment to $22,515.92. Make sure you\'re comfortable with these numbers before signing.'
+      response: 'In short: You\'re borrowing $9,945 at a 28.283% annual interest rate. Over the life of the loan you\'ll pay $12,570.92 in interest, bringing your total repayment to $22,515.92. Make sure you\'re comfortable with these numbers before signing.',
+      targetId: 'section-tila'
     },
     {
       label: 'Total cost',
-      response: 'The total cost of this loan is $22,515.92, which includes the $9,945 principal amount financed plus $12,570.92 in finance charges (interest). This assumes all payments are made on time and as scheduled.'
+      response: 'The total cost of this loan is $22,515.92, which includes the $9,945 principal amount financed plus $12,570.92 in finance charges (interest). This assumes all payments are made on time and as scheduled.',
+      targetId: 'section-tila'
     },
     {
       label: 'Hidden fees?',
-      response: 'Wells Fargo Pay On loans do not charge origination fees or prepayment penalties — you can pay off your loan early without any extra charges. The only cost beyond your principal is the interest, represented by the Finance Charge of $12,570.92 in this agreement.'
+      response: 'Wells Fargo Pay On loans do not charge origination fees or prepayment penalties — you can pay off your loan early without any extra charges. The only cost beyond your principal is the interest, represented by the Finance Charge of $12,570.92 in this agreement.',
+      targetId: 'section-fees'
     },
     {
       label: 'Late payment',
-      response: 'If you miss a payment or pay late, you may be charged a late fee and your account may be reported as delinquent to credit bureaus, which could negatively impact your credit score. Wells Fargo recommends setting up autopay to avoid missed payments. Contact customer service immediately if you\'re unable to make a payment on time.'
+      response: 'If you miss a payment or pay late, you may be charged a late fee and your account may be reported as delinquent to credit bureaus, which could negatively impact your credit score. Wells Fargo recommends setting up autopay to avoid missed payments. Contact customer service immediately if you\'re unable to make a payment on time.',
+      targetId: 'section-late-payment'
     },
   ]
 }
@@ -108,6 +120,18 @@ export default function ChatGuide({ step }) {
   const handleSuggestion = (suggestion) => {
     setMessages(prev => [...prev, { text: suggestion.label, sender: 'user' }])
     setTimeout(() => addReply(suggestion.response), 500)
+
+    if (suggestion.targetId) {
+      const element = document.getElementById(suggestion.targetId)
+      if (element) {
+        document.querySelectorAll('.highlight-yellow').forEach(el => el.classList.remove('highlight-yellow'))
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        element.classList.add('highlight-yellow')
+        setTimeout(() => {
+          element.classList.remove('highlight-yellow')
+        }, 2500)
+      }
+    }
   }
 
   const handleSend = (e) => {

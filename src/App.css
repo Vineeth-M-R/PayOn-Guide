@@ -886,3 +886,17 @@ input, button, select, textarea {
 .agree-accept-row {
   margin-top: 1.5rem;
 }
+
+/* Highlight */
+.highlight-yellow {
+  background-color: rgba(255, 235, 59, 0.4);
+  transition: background-color 0.5s ease;
+  border-radius: 4px;
+}
+
+.agreement-subheading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}

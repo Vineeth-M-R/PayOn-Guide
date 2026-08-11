@@ -230,50 +230,43 @@ function App() {
               <h1 className="step-title-inline">Personal info</h1>
             </div>
 
-            <div className="floating-group">
-              <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}
-                placeholder=" " className="fl-input" id="fname" />
-              <label htmlFor="fname" className="fl-label">First name</label>
+            <div id="section-names">
+              <div className="floating-group">
+                <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}
+                  placeholder=" " className="fl-input" id="fname" />
+                <label htmlFor="fname" className="fl-label">First name</label>
+              </div>
+
+              <div className="floating-group">
+                <input type="text" value={middleInitial} onChange={(e) => setMiddleInitial(e.target.value)}
+                  placeholder=" " className="fl-input" id="mi" />
+                <label htmlFor="mi" className="fl-label">Middle initial <span className="opt">(optional)</span></label>
+              </div>
+
+              <div className="floating-group">
+                <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)}
+                  placeholder=" " className="fl-input" id="lname" />
+                <label htmlFor="lname" className="fl-label">Last name</label>
+              </div>
+
             </div>
 
-            <div className="floating-group">
-              <input type="text" value={middleInitial} onChange={(e) => setMiddleInitial(e.target.value)}
-                placeholder=" " className="fl-input" id="mi" />
-              <label htmlFor="mi" className="fl-label">Middle initial <span className="opt">(optional)</span></label>
-            </div>
+            <div id="section-address">
+              <div className="floating-group">
+                <input type="text" value={address} onChange={(e) => setAddress(e.target.value)}
+                  placeholder=" " className="fl-input" id="address" />
+                <label htmlFor="address" className="fl-label">Home or permanent address</label>
+              </div>
+              <p className="addr-note">
+                For verification purposes, your primary home or business address is required.{' '}
+                <a href="#">Need to use a substitute address?</a>
+              </p>
 
-            <div className="floating-group">
-              <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)}
-                placeholder=" " className="fl-input" id="lname" />
-              <label htmlFor="lname" className="fl-label">Last name</label>
-            </div>
-
-            <div className="floating-group select-group">
-              <select value={suffix} onChange={(e) => setSuffix(e.target.value)}
-                className="fl-input fl-select" id="suffix">
-                <option value=""></option>
-                <option value="jr">Jr.</option>
-                <option value="sr">Sr.</option>
-                <option value="iii">III</option>
-              </select>
-              <label htmlFor="suffix" className="fl-label fl-label-up">Suffix <span className="opt">(optional)</span></label>
-              <span className="select-arrow"><ChevronDownIcon /></span>
-            </div>
-
-            <div className="floating-group">
-              <input type="text" value={address} onChange={(e) => setAddress(e.target.value)}
-                placeholder=" " className="fl-input" id="address" />
-              <label htmlFor="address" className="fl-label">Home or permanent address</label>
-            </div>
-            <p className="addr-note">
-              For verification purposes, your primary home or business address is required.{' '}
-              <a href="#">Need to use a substitute address?</a>
-            </p>
-
-            <div className="floating-group">
-              <input type="text" value={apt} onChange={(e) => setApt(e.target.value)}
-                placeholder=" " className="fl-input" id="apt" />
-              <label htmlFor="apt" className="fl-label">Apt/suite <span className="opt">(optional)</span></label>
+              <div className="floating-group">
+                <input type="text" value={apt} onChange={(e) => setApt(e.target.value)}
+                  placeholder=" " className="fl-input" id="apt" />
+                <label htmlFor="apt" className="fl-label">Apt/suite <span className="opt">(optional)</span></label>
+              </div>
             </div>
 
             <div className="btn-row mt-6 pb-16">
@@ -298,7 +291,7 @@ function App() {
               <h1 className="step-title-inline">ID info</h1>
             </div>
 
-            <div className="id-field-group">
+            <div className="id-field-group" id="section-ssn">
               <div className="id-input-row">
                 <input
                   type="password"
@@ -326,7 +319,7 @@ function App() {
               </div>
             </div>
 
-            <div className="id-field-group">
+            <div className="id-field-group" id="section-citizenship">
               <div className="id-input-row select-row">
                 <select
                   value={citizenship}
@@ -401,7 +394,7 @@ function App() {
               </p>
 
               {/* Truth-In-Lending Table */}
-              <div className="tila-table">
+              <div className="tila-table" id="section-tila">
                 <div className="tila-title">Truth-In-Lending Disclosure Statement</div>
                 <div className="tila-grid">
                   <div className="tila-cell">
@@ -425,6 +418,48 @@ function App() {
                     <p className="tila-value">$22,515.92</p>
                   </div>
                 </div>
+              </div>
+
+              <div id="section-fees">
+                <h3 className="agreement-subheading">Fees and Charges</h3>
+                <p className="agreement-para">
+                  <strong>Origination Fee:</strong> There is no origination fee for this loan. You will receive the full amount of the loan proceeds approved.<br/>
+                  <strong>Prepayment Penalty:</strong> You may pay off your loan in full or in part at any time without penalty. If you prepay your loan in full, you will not be entitled to a refund of any portion of the finance charge already accrued.<br/>
+                  <strong>Returned Payment Fee:</strong> A fee of up to $39 may be charged for each payment returned unpaid by your financial institution.<br/>
+                  <strong>Document Request Fee:</strong> A fee may apply if you request physical copies of account documents after opting for paperless delivery.
+                </p>
+              </div>
+
+              <div id="section-late-payment">
+                <h3 className="agreement-subheading">Late Payments and Defaults</h3>
+                <p className="agreement-para">
+                  <strong>Late Fee:</strong> If a payment is not received in full within 15 days after its due date, a late fee of up to $39 may be applied to your account. This fee is in addition to the regular interest charges that will continue to accrue on the outstanding balance.<br/>
+                  <strong>Default:</strong> You will be in default if you fail to make a required payment when due, file for bankruptcy, or breach any other terms of this Agreement. In the event of default, we may demand immediate payment of the entire unpaid balance of this loan and any other amounts owed. We may also take legal action to collect the amount you owe, in which case you agree to pay reasonable attorneys' fees and court costs, as permitted by law.
+                </p>
+              </div>
+
+              <div id="section-additional-terms">
+                <h3 className="agreement-subheading">Additional Terms and Conditions</h3>
+                <p className="agreement-para">
+                  <strong>1. Promise to Pay:</strong> You promise to pay us the principal amount of this loan, plus interest on the unpaid balance, and any other fees and charges described in this Agreement. You agree to make all payments in U.S. dollars.<br/>
+                  <strong>2. Application of Payments:</strong> Payments will be applied first to any unpaid fees, then to accrued interest, and finally to the principal balance.<br/>
+                  <strong>3. Change in Terms:</strong> We may change the terms of this Agreement at any time, subject to applicable law. We will provide you with written notice of any changes as required by law.<br/>
+                  <strong>4. Arbitration:</strong> This Agreement is subject to a binding arbitration provision. Please read the arbitration provision carefully, as it affects your legal rights, including your right to a jury trial and your ability to participate in a class action lawsuit.<br/>
+                  <strong>5. Credit Reporting:</strong> We may report information about your account to credit bureaus. Late payments, missed payments, or other defaults on your account may be reflected in your credit report.<br/>
+                  <strong>6. Governing Law:</strong> This Agreement will be governed by the laws of the state where you reside at the time this Agreement is signed, except to the extent preempted by federal law.<br/>
+                  <strong>7. Severability:</strong> If any provision of this Agreement is found to be invalid or unenforceable, the remaining provisions will continue in full force and effect.<br/>
+                  <strong>8. Communication Consent:</strong> You agree that we may contact you at any telephone number or email address you provide, using auto-dialers or prerecorded messages, for account servicing and collection purposes.<br/>
+                  <strong>9. Identity Verification:</strong> To help the government fight the funding of terrorism and money laundering activities, Federal law requires us to obtain, verify, and record information that identifies each person who opens an account.<br/>
+                  <strong>10. Security Interest:</strong> This loan is unsecured. We are not taking a security interest in any of your property in connection with this loan.
+                </p>
+                <p className="agreement-para" style={{height: '400px'}}>
+                  {/* Adding some spacing to make sure the page is long enough */}
+                  <br/><br/>
+                  <strong>11. Assignment:</strong> We may assign or transfer our rights and obligations under this Agreement to a third party without your consent. You may not assign or transfer your rights or obligations under this Agreement.<br/>
+                  <strong>12. Delay in Enforcement:</strong> We can delay enforcing any of our rights under this Agreement without losing them.<br/>
+                  <strong>13. Entire Agreement:</strong> This Agreement represents the entire understanding between you and us regarding this loan and supersedes any prior oral or written agreements.
+                  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                </p>
               </div>
 
               <div className="agree-accept-row">
